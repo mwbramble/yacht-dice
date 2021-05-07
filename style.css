@@ -38,7 +38,7 @@ body{
   margin-bottom: 10px;
 }
 
-.dice:hover{
+.valid-selectable:hover{
   background-color: lightgreen;
   color: #333333;
 }
@@ -50,8 +50,8 @@ body{
 }
 
 .selected:hover{
-  background-color: #02270e;
-  color: white;
+  background-color: lightgreen;
+  color: #333333;
   border: 1px solid white;
 }
 

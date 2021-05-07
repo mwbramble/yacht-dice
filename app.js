@@ -34,6 +34,7 @@ function rollDice(){
   if(turnsRemaining > 0 && round <= 12){
     for(let i = 1; i < 6; i++){
       let currDie = d.getElementById(`d${i}`);
+      currDie.classList.add('valid-selectable');
       if(!currDie.classList.contains('selected')){
         let num = Math.floor(Math.random() * 6) + 1;
         currDie.innerHTML = num;
@@ -228,6 +229,10 @@ function updateDisplays(){
   if(round === 13){
     d.getElementById('display').innerHTML = (`Game Over! Your Score: ${score}`);
     d.getElementById('play-again').classList.remove('hidden');
+    for(let i = 1; i < 6; i++){
+      let currDie = d.getElementById(`d${i}`);
+      currDie.classList.remove('valid-selectable');
+    }
     checkHiScore();
   }
 }
