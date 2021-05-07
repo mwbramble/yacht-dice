@@ -9,6 +9,7 @@
 </head>
 <body onload='checkHiScore()'>
   <h1>Yacht Dice</h1>
+  <button type="button" class='hidden' id='play-again' onclick="window.location.reload()">Play Again</button>
   <p><span id='display'>Round: <span id='round-num'>1</span>/12 | Score: <span id='score-num'>0</span></span> | High Score: <span id='hiscore-num'></span></p>
   <div class="dice" id="d1" onclick="lock(1)"></div>
   <div class="dice" id="d2" onclick="lock(2)"></div>

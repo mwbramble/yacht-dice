@@ -18,3 +18,7 @@ table, tr, th, td{
 .submitted{
   background-color: gold;
 }
+
+.hidden{
+  display: none;
+}

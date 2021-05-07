@@ -216,6 +216,7 @@ function updateDisplays(){
   d.getElementById('sub-num').innerHTML = subtotal;
   if(round === 13){
     d.getElementById('display').innerHTML = (`Game Over! Your Score: ${score}`);
+    d.getElementById('play-again').classList.remove('hidden');
     checkHiScore();
   }
 }
