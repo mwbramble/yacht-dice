@@ -1,5 +1,3 @@
-// TODO: add personal best score to localstorage
-
 const d = document;
 
 const ONES = d.getElementById('ones-score');
@@ -20,6 +18,7 @@ let turnsRemaining = 3;
 let round = 1;
 let roll = [];
 let subtotal = 0;
+let bonusGiven = false;
 
 // Placeholder for when I want to control what the dice are.
 // function rollDice(){
@@ -222,9 +221,10 @@ function updateDisplays(){
 }
 
 function checkBonus(){
-  if(subtotal >= 63){
+  if(!bonusGiven && subtotal >= 63){
     d.getElementById('bonus-num').innerHTML = 35;
     score += 35;
+    bonusGiven = true;
   }
 }
 
