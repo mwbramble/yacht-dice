@@ -39,18 +39,18 @@ body{
 }
 
 .dice:hover{
-  background-color: #333333;
-  color: #a6a6a6;
+  background-color: lightgreen;
+  color: #333333;
 }
 
 .selected{
-  background-color: black;
+  background-color: #02270e;
   color: white;
   border: 1px solid white;
 }
 
 .selected:hover{
-  background-color: black;
+  background-color: #02270e;
   color: white;
   border: 1px solid white;
 }
