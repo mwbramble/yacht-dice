@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css" type="text/css">
+  <title>Yacht Dice</title>
+</head>
+<body onload='checkHiScore()'>
+  <h1>Yacht Dice</h1>
+  <p><span id='display'>Round: <span id='round-num'>1</span>/12 | Score: <span id='score-num'>0</span></span> | High Score: <span id='hiscore-num'></span></p>
+  <div class="dice" id="d1" onclick="lock(1)"></div>
+  <div class="dice" id="d2" onclick="lock(2)"></div>
+  <div class="dice" id="d3" onclick="lock(3)"></div>
+  <div class="dice" id="d4" onclick="lock(4)"></div>
+  <div class="dice" id="d5" onclick="lock(5)"></div>
+  <button type="button" onclick="rollDice()">Roll</button>
+  <p>Rolls Remaining: <span id='turn-num'>3</span></p>
+  <hr>
+  <table>
+    <tr>
+      <th>Category</th>
+      <th>Score</th>
+    </tr>
+    <tr>
+      <td>Ones</td>
+      <td class='score-option' onclick='selectScore(this)' id='ones-score'></td>
+    </tr>
+    <tr>
+      <td>Twos</td>
+      <td class='score-option' onclick='selectScore(this)' id='twos-score'></td>
+    </tr>
+    <tr>
+      <td>Threes</td>
+      <td class='score-option' onclick='selectScore(this)' id='threes-score'></td>
+    </tr>
+    <tr>
+      <td>Fours</td>
+      <td class='score-option' onclick='selectScore(this)' id='fours-score'></td>
+    </tr>
+    <tr>
+      <td>Fives</td>
+      <td class='score-option' onclick='selectScore(this)' id='fives-score'></td>
+    </tr>
+    <tr>
+      <td>Sixes</td>
+      <td class='score-option' onclick='selectScore(this)' id='sixes-score'></td>
+    </tr>
+    <tr>
+      <td>Subtotal</td>
+      <td id='subtotal-score'><span id='sub-num'>0</span>/63</td>
+    </tr><tr>
+      <td>Bonus</td>
+      <td id='bonus-score'>+<span id='bonus-num'>0</span></td>
+    </tr>
+    <tr>
+      <td>Choice</td>
+      <td class='score-option' onclick='selectScore(this)' id='choice-score'></td>
+    </tr>
+    <tr>
+      <td>4 of a Kind</td>
+      <td class='score-option' onclick='selectScore(this)' id='quad-score'></td>
+    </tr>
+    <tr>
+      <td>Full House</td>
+      <td class='score-option' onclick='selectScore(this)' id='fhouse-score'></td>
+    </tr>
+    <tr>
+      <td>S. Straight</td>
+      <td class='score-option' onclick='selectScore(this)' id='sstraight-score'></td>
+    </tr>
+    <tr>
+      <td>L. Straight</td>
+      <td class='score-option' onclick='selectScore(this)' id='lstraight-score'></td>
+    </tr>
+    <tr>
+      <td>Yacht</td>
+      <td class='score-option' onclick='selectScore(this)' id='yacht-score'></td>
+    </tr>
+  </table>
+  <script src="./app.js"></script>
+</body>
+</html>
