@@ -1,85 +1,184 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css" type="text/css">
+  <meta charset='UTF-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+  <link rel='stylesheet' href='./style.css' type='text/css'>
   <title>Yacht Dice</title>
 </head>
 <body onload='checkHiScore()'>
-  <h1>Yacht Dice</h1>
-  <button type="button" class='hidden' id='play-again' onclick="window.location.reload()">Play Again</button>
-  <p><span id='display'>Round: <span id='round-num'>1</span>/12 | Score: <span id='score-num'>0</span></span> | High Score: <span id='hiscore-num'></span></p>
-  <div class="dice" id="d1" onclick="lock(1)"></div>
-  <div class="dice" id="d2" onclick="lock(2)"></div>
-  <div class="dice" id="d3" onclick="lock(3)"></div>
-  <div class="dice" id="d4" onclick="lock(4)"></div>
-  <div class="dice" id="d5" onclick="lock(5)"></div>
-  <button type="button" onclick="rollDice()">Roll</button>
-  <p>Rolls Remaining: <span id='turn-num'>3</span></p>
-  <hr>
-  <table>
-    <tr>
-      <th>Category</th>
-      <th>Score</th>
-    </tr>
-    <tr>
-      <td>Ones</td>
-      <td class='score-option' onclick='selectScore(this)' id='ones-score'></td>
-    </tr>
-    <tr>
-      <td>Twos</td>
-      <td class='score-option' onclick='selectScore(this)' id='twos-score'></td>
-    </tr>
-    <tr>
-      <td>Threes</td>
-      <td class='score-option' onclick='selectScore(this)' id='threes-score'></td>
-    </tr>
-    <tr>
-      <td>Fours</td>
-      <td class='score-option' onclick='selectScore(this)' id='fours-score'></td>
-    </tr>
-    <tr>
-      <td>Fives</td>
-      <td class='score-option' onclick='selectScore(this)' id='fives-score'></td>
-    </tr>
-    <tr>
-      <td>Sixes</td>
-      <td class='score-option' onclick='selectScore(this)' id='sixes-score'></td>
-    </tr>
-    <tr>
-      <td>Subtotal</td>
-      <td id='subtotal-score'><span id='sub-num'>0</span>/63</td>
-    </tr><tr>
-      <td>Bonus</td>
-      <td id='bonus-score'>+<span id='bonus-num'>0</span></td>
-    </tr>
-    <tr>
-      <td>Choice</td>
-      <td class='score-option' onclick='selectScore(this)' id='choice-score'></td>
-    </tr>
-    <tr>
-      <td>4 of a Kind</td>
-      <td class='score-option' onclick='selectScore(this)' id='quad-score'></td>
-    </tr>
-    <tr>
-      <td>Full House</td>
-      <td class='score-option' onclick='selectScore(this)' id='fhouse-score'></td>
-    </tr>
-    <tr>
-      <td>S. Straight</td>
-      <td class='score-option' onclick='selectScore(this)' id='sstraight-score'></td>
-    </tr>
-    <tr>
-      <td>L. Straight</td>
-      <td class='score-option' onclick='selectScore(this)' id='lstraight-score'></td>
-    </tr>
-    <tr>
-      <td>Yacht</td>
-      <td class='score-option' onclick='selectScore(this)' id='yacht-score'></td>
-    </tr>
-  </table>
-  <script src="./app.js"></script>
+  <section id='container'>
+    <h1>Yacht Dice</h1>
+    <button type='button' class='button' onclick='toggleRules()'>How to Play</button>
+    <button type='button' class='button hidden' id='play-again' onclick='window.location.reload()'>Play Again</button>
+    <p><span id='display'>Round: <span id='round-num'>1</span>/12 | Score: <span id='score-num'>0</span></span> | High Score: <span id='hiscore-num'></span></p>
+    <div class='dice' id='d1' onclick='lock(1)'>&nbsp;</div>
+    <div class='dice' id='d2' onclick='lock(2)'>&nbsp;</div>
+    <div class='dice' id='d3' onclick='lock(3)'>&nbsp;</div>
+    <div class='dice' id='d4' onclick='lock(4)'>&nbsp;</div>
+    <div class='dice' id='d5' onclick='lock(5)'>&nbsp;</div>
+    <br>
+    <button type='button' class='button' onclick='rollDice()'>Roll</button>
+    <p>Rolls Remaining: <span id='turn-num'>3</span></p>
+    <table>
+      <tr>
+        <th>Category</th>
+        <th>Score</th>
+      </tr>
+      <tr>
+        <td class='score-label'>Ones</td>
+        <td class='score-option' onclick='selectScore(this)' id='ones-score'></td>
+      </tr>
+      <tr>
+        <td class='score-label'>Twos</td>
+        <td class='score-option' onclick='selectScore(this)' id='twos-score'></td>
+      </tr>
+      <tr>
+        <td class='score-label'>Threes</td>
+        <td class='score-option' onclick='selectScore(this)' id='threes-score'></td>
+      </tr>
+      <tr>
+        <td class='score-label'>Fours</td>
+        <td class='score-option' onclick='selectScore(this)' id='fours-score'></td>
+      </tr>
+      <tr>
+        <td class='score-label'>Fives</td>
+        <td class='score-option' onclick='selectScore(this)' id='fives-score'></td>
+      </tr>
+      <tr>
+        <td class='score-label'>Sixes</td>
+        <td class='score-option' onclick='selectScore(this)' id='sixes-score'></td>
+      </tr>
+      <tr>
+        <td class='score-label'>Subtotal</td>
+        <td id='subtotal-score'><span id='sub-num'>0</span>/63</td>
+      </tr><tr>
+        <td class='score-label'>Bonus</td>
+        <td id='bonus-score'>+<span id='bonus-num'>0</span></td>
+      </tr>
+      <tr>
+        <td class='score-label'>Choice</td>
+        <td class='score-option' onclick='selectScore(this)' id='choice-score'></td>
+      </tr>
+      <tr>
+        <td class='score-label'>4 of a Kind</td>
+        <td class='score-option' onclick='selectScore(this)' id='quad-score'></td>
+      </tr>
+      <tr>
+        <td class='score-label'>Full House</td>
+        <td class='score-option' onclick='selectScore(this)' id='fhouse-score'></td>
+      </tr>
+      <tr>
+        <td class='score-label'>S. Straight</td>
+        <td class='score-option' onclick='selectScore(this)' id='sstraight-score'></td>
+      </tr>
+      <tr>
+        <td class='score-label'>L. Straight</td>
+        <td class='score-option' onclick='selectScore(this)' id='lstraight-score'></td>
+      </tr>
+      <tr>
+        <td class='score-label'>Yacht</td>
+        <td class='score-option' onclick='selectScore(this)' id='yacht-score'></td>
+      </tr>
+    </table>
+  </section>
+  <section id='rules' class='hidden'>
+    <h1>How to Play</h1>
+    <button type='button' class='button' onclick='toggleRules()'>How to Play</button>
+    <h2>Goal</h2>
+    <p>Get the highest score after 12 rounds have been completed.</p>
+    <h2>Order of Play</h2>
+    <ul>
+      <li>Each round, all five dice are rolled up to three times.</li>
+      <li>Between these rolls, any number of the dice can be set aside from the next roll to preserve their number, or brought back into the mix for the next roll.</li>
+      <li>After each roll, the values of the dice may be used to add a score to one of the 12 categories. After the third roll, a category must be chosen.</li>
+      <li>Each category may only be chosen once.</li>
+    </ul>
+    <h2>Scoring</h2>
+    <table>
+      <tr>
+        <th>Category</th>
+        <th>Valid Combination</th>
+        <th>Score</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>Ones</td>
+        <td>Any Combination</td>
+        <td>Sum of Dice Showing 1</td>
+        <td>[1, 1, 1, 4, 6] = 3 Points</td>
+      </tr>
+      <tr>
+        <td>Twos</td>
+        <td>Any Combination</td>
+        <td>Sum of Dice Showing 2</td>
+        <td>[1, 2, 2, 2, 2] = 8 Points</td>
+      </tr>
+      <tr>
+        <td>Threes</td>
+        <td>Any Combination</td>
+        <td>Sum of Dice Showing 3</td>
+        <td>[2, 3, 3, 5, 5] = 6 Points</td>
+      </tr>
+      <tr>
+        <td>Fours</td>
+        <td>Any Combination</td>
+        <td>Sum of Dice Showing 4</td>
+        <td>[1, 2, 3, 4, 5] = 4 Points</td>
+      </tr>
+      <tr>
+        <td>Fives</td>
+        <td>Any Combination</td>
+        <td>Sum of Dice Showing 5</td>
+        <td>[2, 3, 3, 5, 5] = 10 Points</td>
+      </tr>
+      <tr>
+        <td>Sixes</td>
+        <td>Any Combination</td>
+        <td>Sum of Dice Showing 6</td>
+        <td>[3, 5, 6, 6, 6] = 18 Points</td>
+      </tr>
+      <tr>
+        <td>Choice</td>
+        <td>Any Combination</td>
+        <td>Sum of All Dice</td>
+        <td>[2, 3, 3, 5, 6] = 19 Points</td>
+      </tr>
+      <tr>
+        <td>Full House</td>
+        <td>Two of One Number and Three of Another</td>
+        <td>Sum of All Dice</td>
+        <td>[3, 3, 5, 5, 5] = 21 Points</td>
+      </tr>
+      <tr>
+        <td>Four of a Kind</td>
+        <td>Four Dice with The Same Number</td>
+        <td>Sum of All Dice</td>
+        <td>[4, 4, 4, 4, 5] = 21 Points</td>
+      </tr>
+      <tr>
+        <td>Small Straight</td>
+        <td>Four Dice with Consecutive Numbers</td>
+        <td>15</td>
+        <td>[1, 3, 4, 5, 6] = 15 Points</td>
+      </tr>
+      <tr>
+        <td>Large Straight</td>
+        <td>Five Dice with Consecutive Numbers</td>
+        <td>30</td>
+        <td>[2, 3, 4, 5, 6] = 30 Points</td>
+      </tr>
+      <tr>
+        <td>Yacht</td>
+        <td>Five Dice with The Same Number</td>
+        <td>50</td>
+        <td>[1, 1, 1, 1, 1] = 50 Points</td>
+      </tr>
+    </table>
+  </section>
+  <script src='./app.js'></script>
 </body>
 </html>

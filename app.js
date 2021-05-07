@@ -13,6 +13,9 @@ const SSTRAIGHT = d.getElementById('sstraight-score');
 const LSTRAIGHT = d.getElementById('lstraight-score');
 const YACHT = d.getElementById('yacht-score');
 
+const CONTAINER = d.getElementById('container');
+const RULES = d.getElementById('rules');
+
 let score = 0;
 let turnsRemaining = 3;
 let round = 1;
@@ -110,6 +113,7 @@ function calculateScores(arr){
     else{
       SSTRAIGHT.innerHTML = 0;
     }
+    SSTRAIGHT.classList.add('valid-option');
   }
 
   if(LSTRAIGHT.classList.contains('submitted') === false){
@@ -119,12 +123,14 @@ function calculateScores(arr){
     else{
       LSTRAIGHT.innerHTML = 0;
     }
+    LSTRAIGHT.classList.add('valid-option');
   }
 
   fillTable(ones, twos, threes, fours, fives, sixes, choice);
 
   if(YACHT.classList.contains('submitted') === false){
     arr.every(v => v === arr[0]) ? YACHT.innerHTML = 50 : YACHT.innerHTML = 0;
+    YACHT.classList.add('valid-option');
   }
 }
 
@@ -136,9 +142,11 @@ function fullHouse(arr, sum){
   let vals = Object.values(count);
   if((vals[0] === 2 && vals[1] === 3 || vals[0] === 3 && vals[1] === 2)){
     FHOUSE.innerHTML = sum;
+    FHOUSE.classList.add('valid-option');
   }
   else{
     FHOUSE.innerHTML = 0;
+    FHOUSE.classList.add('valid-option');
   }
 }
 
@@ -150,37 +158,39 @@ function fourOfKind(arr, sum){
   let vals = Object.values(count);
   if((vals[0] === 4 || vals[1] === 4)){
     QUAD.innerHTML = sum;
+    QUAD.classList.add('valid-option');
   }
   else{
     QUAD.innerHTML = 0;
+    QUAD.classList.add('valid-option');
   }
 }
 
 // Populates table with remaining potential scores.
 function fillTable(ones, twos, threes, fours, fives, sixes, choice){
-  ONES.classList.contains('submitted') ? null : ONES.innerHTML = ones;
-  TWOS.classList.contains('submitted') ? null : TWOS.innerHTML = twos;
-  THREES.classList.contains('submitted') ? null : THREES.innerHTML = threes;
-  FOURS.classList.contains('submitted') ? null : FOURS.innerHTML = fours;
-  FIVES.classList.contains('submitted') ? null : FIVES.innerHTML = fives;
-  SIXES.classList.contains('submitted') ? null : SIXES.innerHTML = sixes;
-  CHOICE.classList.contains('submitted') ? null : CHOICE.innerHTML = choice;
+  ONES.classList.contains('submitted') ? null : (ONES.innerHTML = ones), (ONES.classList.add('valid-option'));
+  TWOS.classList.contains('submitted') ? null : (TWOS.innerHTML = twos), (TWOS.classList.add('valid-option'));
+  THREES.classList.contains('submitted') ? null : (THREES.innerHTML = threes), (THREES.classList.add('valid-option'));
+  FOURS.classList.contains('submitted') ? null : (FOURS.innerHTML = fours), (FOURS.classList.add('valid-option'));
+  FIVES.classList.contains('submitted') ? null : (FIVES.innerHTML = fives), (FIVES.classList.add('valid-option'));
+  SIXES.classList.contains('submitted') ? null : (SIXES.innerHTML = sixes), (SIXES.classList.add('valid-option'));
+  CHOICE.classList.contains('submitted') ? null : (CHOICE.innerHTML = choice), (CHOICE.classList.add('valid-option'));
 }
 
 // Clears unsubmitted scores from table.
 function clearTable(){
-  ONES.classList.contains('submitted') ? null : ONES.innerHTML = '';
-  TWOS.classList.contains('submitted') ? null : TWOS.innerHTML = '';
-  THREES.classList.contains('submitted') ? null : THREES.innerHTML = '';
-  FOURS.classList.contains('submitted') ? null : FOURS.innerHTML = '';
-  FIVES.classList.contains('submitted') ? null : FIVES.innerHTML = '';
-  SIXES.classList.contains('submitted') ? null : SIXES.innerHTML = '';
-  CHOICE.classList.contains('submitted') ? null : CHOICE.innerHTML = '';
-  QUAD.classList.contains('submitted') ? null : QUAD.innerHTML = '';
-  FHOUSE.classList.contains('submitted') ? null : FHOUSE.innerHTML = '';
-  SSTRAIGHT.classList.contains('submitted') ? null : SSTRAIGHT.innerHTML = '';
-  LSTRAIGHT.classList.contains('submitted') ? null : LSTRAIGHT.innerHTML = '';
-  YACHT.classList.contains('submitted') ? null : YACHT.innerHTML = '';
+  ONES.classList.contains('submitted') ? null : (ONES.innerHTML = ''), (ONES.classList.remove('valid-option'));
+  TWOS.classList.contains('submitted') ? null : (TWOS.innerHTML = ''), (TWOS.classList.remove('valid-option'));
+  THREES.classList.contains('submitted') ? null : (THREES.innerHTML = ''), (THREES.classList.remove('valid-option'));
+  FOURS.classList.contains('submitted') ? null : (FOURS.innerHTML = ''), (FOURS.classList.remove('valid-option'));
+  FIVES.classList.contains('submitted') ? null : (FIVES.innerHTML = ''), (FIVES.classList.remove('valid-option'));
+  SIXES.classList.contains('submitted') ? null : (SIXES.innerHTML = ''), (SIXES.classList.remove('valid-option'));
+  CHOICE.classList.contains('submitted') ? null : (CHOICE.innerHTML = ''), (CHOICE.classList.remove('valid-option'));
+  QUAD.classList.contains('submitted') ? null : (QUAD.innerHTML = ''), (QUAD.classList.remove('valid-option'));
+  FHOUSE.classList.contains('submitted') ? null : (FHOUSE.innerHTML = ''), (FHOUSE.classList.remove('valid-option'));
+  SSTRAIGHT.classList.contains('submitted') ? null : (SSTRAIGHT.innerHTML = ''), (SSTRAIGHT.classList.remove('valid-option'));
+  LSTRAIGHT.classList.contains('submitted') ? null : (LSTRAIGHT.innerHTML = ''), (LSTRAIGHT.classList.remove('valid-option'));
+  YACHT.classList.contains('submitted') ? null : (YACHT.innerHTML = ''), (YACHT.classList.remove('valid-option'));
 }
 
 // Resets dice for new round.
@@ -199,6 +209,7 @@ function selectScore(e){
       subtotal += parseInt(e.innerHTML);
     }
     e.classList.add('submitted');
+    e.classList.remove('valid-option');
     score += parseInt(e.innerHTML);
     round++;
     turnsRemaining = 3;
@@ -237,4 +248,9 @@ function checkHiScore(){
     localStorage.setItem('hiScore', score);
   }
   d.getElementById('hiscore-num').innerHTML = localStorage.getItem('hiScore');
+}
+
+function toggleRules(){
+  CONTAINER.classList.contains('hidden') ? CONTAINER.classList.remove('hidden') : CONTAINER.classList.add('hidden');
+  RULES.classList.contains('hidden') ? RULES.classList.remove('hidden') : RULES.classList.add('hidden');
 }
