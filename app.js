@@ -23,7 +23,7 @@ let subtotal = 0;
 
 // Placeholder for when I want to control what the dice are.
 // function rollDice(){
-//   roll = [1, 2, 3, 4, 6];
+//   roll = [6, 6, 6, 6, 6];
 //   calculateScores(roll);
 // }
 
@@ -83,10 +83,14 @@ function calculateScores(arr){
   choice = ones + twos + threes + fours + fives + sixes;
 
   // Checks for full house.
-  fullHouse(roll, choice);
+  if(FHOUSE.classList.contains('submitted') === false){
+    fullHouse(roll, choice);
+  }
 
   // Checks for four of a kind.
-  fourOfKind(roll, choice);
+  if(QUAD.classList.contains('submitted') === false){
+    fourOfKind(roll, choice);
+  }
 
   // Checks for small and large straights.
   const sm1 = [1, 2, 3, 4];
@@ -119,7 +123,10 @@ function calculateScores(arr){
   }
 
   fillTable(ones, twos, threes, fours, fives, sixes, choice);
-  arr.every(v => v === arr[0]) ? YACHT.innerHTML = 50 : YACHT.innerHTML = 0;
+
+  if(YACHT.classList.contains('submitted') === false){
+    arr.every(v => v === arr[0]) ? YACHT.innerHTML = 50 : YACHT.innerHTML = 0;
+  }
 }
 
 function fullHouse(arr, sum){
