@@ -14,7 +14,7 @@
     <h1>Yacht Dice</h1>
     <button type='button' class='button' onclick='toggleRules()'>How to Play</button>
     <button type='button' class='button hidden' id='play-again' onclick='window.location.reload()'>Play Again</button>
-    <p><span id='display'>Round: <span id='round-num'>1</span>/12 | Score: <span id='score-num'>0</span></span> | High Score: <span id='hiscore-num'></span></p>
+    <p><span class='low-hidden' id='display'>Round: <span id='round-num'>1</span>/12 | Score: <span id='score-num'>0</span></span> | <span onclick='showLowScore()'>High Score:</span> <span id='hiscore-num'></span><span id='lowscore-num'></span></p>
     <div class='dice' id='d1' onclick='lock(1)'>&nbsp;</div>
     <div class='dice' id='d2' onclick='lock(2)'>&nbsp;</div>
     <div class='dice' id='d3' onclick='lock(3)'>&nbsp;</div>
@@ -96,6 +96,7 @@
       <li>Between these rolls, any number of the dice can be set aside from the next roll to preserve their number, or brought back into the mix for the next roll.</li>
       <li>After each roll, the values of the dice may be used to add a score to one of the 12 categories. After the third roll, a category must be chosen.</li>
       <li>Each category may only be chosen once.</li>
+      <li>If the sum of your Ones through Sixes categories is equal to or greater than 63, you receive a 35 point bonus.</li>
     </ul>
     <h2>Scoring</h2>
     <table>

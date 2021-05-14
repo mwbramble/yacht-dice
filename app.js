@@ -253,9 +253,25 @@ function checkHiScore(){
     localStorage.setItem('hiScore', score);
   }
   d.getElementById('hiscore-num').innerHTML = localStorage.getItem('hiScore');
+
+  if(!localStorage.getItem('lowScore')){
+    localStorage.setItem('lowScore', 322);
+  }
+  if(score !== 0 && score < localStorage.getItem('lowScore')){
+    localStorage.setItem('lowScore', score);
+  }
 }
 
 function toggleRules(){
   CONTAINER.classList.contains('hidden') ? CONTAINER.classList.remove('hidden') : CONTAINER.classList.add('hidden');
   RULES.classList.contains('hidden') ? RULES.classList.remove('hidden') : RULES.classList.add('hidden');
+}
+
+function showLowScore(){
+  if(d.getElementById('lowscore-num').innerHTML === ''){
+    d.getElementById('lowscore-num').innerHTML = ` | Low Score: ${localStorage.getItem('lowScore')}`;
+  }
+  else{
+    d.getElementById('lowscore-num').innerHTML = '';
+  }
 }
