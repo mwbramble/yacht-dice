@@ -38,20 +38,9 @@ body{
   margin-bottom: 10px;
 }
 
-.valid-selectable:hover{
-  background-color: lightgreen;
-  color: #333333;
-}
-
 .selected{
   background-color: #02270e;
   color: white;
-  border: 1px solid white;
-}
-
-.selected:hover{
-  background-color: lightgreen;
-  color: #333333;
   border: 1px solid white;
 }
 
@@ -79,16 +68,31 @@ tr, th, td{
   color: #333333;
 }
 
-.submitted:hover{
-  background-color: gold;
-  color: #333333;
-}
-
 .hidden{
   display: none;
 }
 
-.valid-option:hover{
-  cursor: pointer;
-  background-color: yellow;
+
+
+@media(hover: hover){
+  .valid-selectable:hover{
+    background-color: lightgreen;
+    color: #333333;
+  }
+  
+  .selected:hover{
+    background-color: lightgreen;
+    color: #333333;
+    border: 1px solid white;
+  }
+
+  .submitted:hover{
+    background-color: gold;
+    color: #333333;
+  }
+
+  .valid-option:hover{
+    cursor: pointer;
+    background-color: yellow;
+  }
 }

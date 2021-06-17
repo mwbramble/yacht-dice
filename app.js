@@ -18,10 +18,12 @@ const RULES = d.getElementById('rules');
 
 let score = 0;
 let turnsRemaining = 3;
+let lockedDie = 0;
 let round = 1;
 let roll = [];
 let subtotal = 0;
 let bonusGiven = false;
+let newPlayer = true;
 
 // Placeholder for when I want to control what the dice are.
 // function rollDice(){
@@ -31,7 +33,7 @@ let bonusGiven = false;
 
 // Rolls the dice.
 function rollDice(){
-  if(turnsRemaining > 0 && round <= 12){
+  if(turnsRemaining > 0 && round <= 12 && lockedDie != 5){
     for(let i = 1; i < 6; i++){
       let currDie = d.getElementById(`d${i}`);
       currDie.classList.add('valid-selectable');
@@ -45,6 +47,9 @@ function rollDice(){
     d.getElementById('turn-num').innerHTML = turnsRemaining;
     calculateScores(roll);
   }
+  if(lockedDie === 5){
+    alert('You cannot roll when all dice are locked!');
+  }
 }
 
 // Locks the selected die, making it unusable for the next roll.
@@ -52,6 +57,7 @@ function lock(n){
   if(turnsRemaining < 3){
     let currDie = d.getElementById(`d${n}`);
     currDie.classList.contains('selected') ? currDie.classList.remove('selected') : currDie.classList.add('selected');
+    lockedDie++;
   }
 }
 
@@ -200,6 +206,7 @@ function resetDice(){
     d.getElementById(`d${i}`).classList.remove('selected');
     d.getElementById(`d${i}`).innerHTML = '';
   }
+  lockedDie = 0;
   roll = [];
 }
 
@@ -260,6 +267,21 @@ function checkHiScore(){
   if(score !== 0 && score < localStorage.getItem('lowScore')){
     localStorage.setItem('lowScore', score);
   }
+
+  if(newPlayer){
+    localStorage.setItem('hiScore', 0);
+    localStorage.setItem('lowScore', null);
+  }
+  else{
+    if(score > localStorage.getItem('hiScore')){
+      localStorage.setItem('hiScore', score);
+    }
+    d.getElementById('hiscore-num').innerHTML = localStorage.getItem('hiScore');
+
+    if(score !== 0 && score < localStorage.getItem('lowScore')){
+      localStorage.setItem('lowScore', score);
+    }
+  }
 }
 
 function toggleRules(){
@@ -268,6 +290,7 @@ function toggleRules(){
 }
 
 function showLowScore(){
+  // make it not show up if localstorage lowscore is null or something
   if(d.getElementById('lowscore-num').innerHTML === ''){
     d.getElementById('lowscore-num').innerHTML = ` | Low Score: ${localStorage.getItem('lowScore')}`;
   }
