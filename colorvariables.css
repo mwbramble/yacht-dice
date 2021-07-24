@@ -1,0 +1,50 @@
+:root{
+  --bg-primary: hsl(139, 87%, 21%);
+  --text-primary: hsl(0, 0%, 100%);
+
+  --bg-secondary: hsl(120, 73%, 75%);
+  --text-secondary: hsl(0, 0%, 20%);
+
+  --borders: hsl(0, 0%, 100%);
+
+  --dice-primary: hsl(0, 0%, 100%);
+  --dice-secondary: hsl(0, 0%, 0%);
+
+  --bg-selected: hsl(120, 73%, 15%);
+  --bg-submitted: hsl(51, 100%, 50%);
+  --bg-option: hsl(60, 100%, 50%);
+}
+
+[data-theme="dark"]{
+  --bg-primary: hsl(139, 87%, 5%);
+  --text-primary: hsl(0, 0%, 80%);
+
+  --bg-secondary: hsl(120, 73%, 15%);
+  --text-secondary: hsl(0, 0%, 80%);
+
+  --borders: hsl(0, 0%, 80%);
+
+  --dice-primary: hsl(0, 0%, 80%);
+  --dice-secondary: hsl(0, 0%, 0%);
+
+  --bg-selected: hsl(120, 73%, 1%);
+  --bg-submitted: hsl(51, 100%, 25%);
+  --bg-option: hsl(60, 100%, 25%);
+}
+
+[data-theme="light"]{
+  --bg-primary: hsl(139, 87%, 95%);
+  --text-primary: hsl(0, 0%, 20%);
+
+  --bg-secondary: hsl(120, 73%, 85%);
+  --text-secondary: hsl(0, 0%, 20%);
+
+  --borders: hsl(0, 0%, 100%);
+
+  --dice-primary: hsl(0, 0%, 100%);
+  --dice-secondary: hsl(0, 0%, 0%);
+
+  --bg-selected: hsl(120, 73%, 75%);
+  --bg-submitted: hsl(51, 100%, 50%);
+  --bg-option: hsl(60, 100%, 50%);
+}

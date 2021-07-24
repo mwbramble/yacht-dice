@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
   <link rel='stylesheet' href='./style.css' type='text/css'>
+  <link rel='stylesheet' href='./colorvariables.css' type='text/css'>
   <title>Yacht Dice</title>
 </head>
 <body onload='checkHiScore()'>
@@ -14,6 +15,14 @@
     <h1>Yacht Dice</h1>
     <button type='button' class='button' onclick='toggleRules()'>How to Play</button>
     <button type='button' class='button hidden' id='play-again' onclick='window.location.reload()'>Play Again</button>
+    <label id='theme-switch'>
+      Theme:
+      <select id='theme' onchange='changeTheme(this.value)'>
+        <option id='default' value='default'>Default</option>
+        <option id='dark' value='dark'>Dark</option>
+        <option id='light' value='light'>Light</option>
+      </select>
+    </label>
     <p><span class='low-hidden' id='display'>Round: <span id='round-num'>1</span>/12 | Score: <span id='score-num'>0</span></span> | <span onclick='showLowScore()'>High Score:</span> <span id='hiscore-num'></span><span id='lowscore-num'></span></p>
     <div class='dice' id='d1' onclick='lock(1)'>&nbsp;</div>
     <div class='dice' id='d2' onclick='lock(2)'>&nbsp;</div>

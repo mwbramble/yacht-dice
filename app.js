@@ -1,5 +1,8 @@
 const d = document;
 
+d.documentElement.setAttribute('data-theme', localStorage.getItem('theme'));
+d.getElementById(localStorage.getItem('theme')).selected = true;
+
 const ONES = d.getElementById('ones-score');
 const TWOS = d.getElementById('twos-score');
 const THREES = d.getElementById('threes-score');
@@ -24,6 +27,7 @@ let roll = [];
 let subtotal = 0;
 let bonusGiven = false;
 let newPlayer = true;
+let finalScore = [];
 
 // Placeholder for when I want to control what the dice are.
 // function rollDice(){
@@ -56,7 +60,15 @@ function rollDice(){
 function lock(n){
   if(turnsRemaining < 3){
     let currDie = d.getElementById(`d${n}`);
-    currDie.classList.contains('selected') ? currDie.classList.remove('selected') : currDie.classList.add('selected');
+    // currDie.classList.contains('selected') ? currDie.classList.remove('selected') : currDie.classList.add('selected');
+    if(currDie.classList.contains('selected')){
+      currDie.classList.remove('selected');
+      currDie.classList.add('valid-selectable');
+    }
+    else{
+      currDie.classList.remove('valid-selectable');
+      currDie.classList.add('selected');
+    }
     lockedDie++;
   }
 }
@@ -240,6 +252,7 @@ function updateDisplays(){
       let currDie = d.getElementById(`d${i}`);
       currDie.classList.remove('valid-selectable');
     }
+    saveScore();
     checkHiScore();
   }
 }
@@ -297,4 +310,9 @@ function showLowScore(){
   else{
     d.getElementById('lowscore-num').innerHTML = '';
   }
+}
+
+function changeTheme(e){
+  d.documentElement.setAttribute('data-theme', e);
+  localStorage.setItem('theme', e);
 }

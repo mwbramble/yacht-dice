@@ -1,7 +1,7 @@
 body{
   font-family: 'Josefin Sans', sans-serif;
-  background-color: #076324;
-  color: white;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   text-align: center;
 }
 
@@ -15,9 +15,9 @@ body{
 }
 
 .button{
-  background-color: lightgreen;
-  border: 2px solid white;
-  color: #333333;
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--borders);
+  color: var(--text-secondary);
   font-family: 'Josefin Sans', sans-serif;
   height: 32px;
   padding: 5px 10px;
@@ -27,35 +27,35 @@ body{
 .dice{
   height: 30px;
   width: 30px;
-  border: 1px solid black;
+  border: 1px solid var(--dice-secondary);
   text-align: center;
   line-height: 32px;
   display: inline-block;
-  background-color: white;
-  color: black;
+  background-color: var(--dice-primary);
+  color: var(--dice-secondary);
   border-radius: 25%;
   cursor: pointer;
   margin-bottom: 10px;
 }
 
 .selected{
-  background-color: #02270e;
-  color: white;
-  border: 1px solid white;
+  background-color: var(--bg-selected);
+  color: var(--text-primary);
+  border: 1px solid var(--borders);
 }
 
 table, tr, th, td{
-  border: 1px solid white;
-  color: #333333;
+  border: 1px solid var(--borders);
+  color: var(--text-secondary);
   margin: 0 auto;
 }
 
 table{
-  background-color: white;
+  background-color: var(--borders);
 }
 
 tr, th, td{
-  background-color: lightgreen;
+  background-color: var(--bg-secondary);
   padding: 5px;
 }
 
@@ -64,35 +64,29 @@ tr, th, td{
 }
 
 .submitted{
-  background-color: gold;
-  color: #333333;
+  background-color: var(--bg-submitted);
+  color: var(--text-secondary);
 }
 
 .hidden{
   display: none;
 }
 
-
-
 @media(hover: hover){
   .valid-selectable:hover{
-    background-color: lightgreen;
-    color: #333333;
-  }
-  
-  .selected:hover{
-    background-color: lightgreen;
-    color: #333333;
-    border: 1px solid white;
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    border: 1px solid var(--text-secondary);
   }
 
   .submitted:hover{
-    background-color: gold;
-    color: #333333;
+    background-color: var(--bg-submitted);
+    color: var(--text-secondary);
   }
 
   .valid-option:hover{
     cursor: pointer;
-    background-color: yellow;
+    background-color: var(--bg-option);
+    color: var(--text-secondary);
   }
 }
